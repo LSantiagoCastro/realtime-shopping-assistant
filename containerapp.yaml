@@ -1,0 +1,44 @@
+apiVersion: 2022-10-01
+location: eastus
+name: caagentsbackend
+properties:
+  managedEnvironmentId: /subscriptions/{subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.App/managedEnvironments/{your-environment}
+  configuration:
+    ingress:
+      external: true
+      targetPort: 3000
+      transport: auto
+      traffic:
+        - weight: 100
+          latestRevision: true
+    registries:
+      - server: acragentsgraphs.azurecr.io
+        username: ACRAgentsGraphs
+        passwordSecretRef: registry-password
+    secrets:
+      - name: registry-password
+        value: "{acr-password}"
+  template:
+    containers:
+      - image: acragentsgraphs.azurecr.io/voice-ecommerce:latest
+        name: voice-ecommerce-app
+        env:
+          - name: NODE_ENV
+            value: production
+          - name: NEXT_TELEMETRY_DISABLED
+            value: "1"
+          - name: PORT
+            value: "3000"
+          - name: HOSTNAME
+            value: "0.0.0.0"
+        resources:
+          cpu: 1.0
+          memory: 2.0Gi
+    scale:
+      minReplicas: 1
+      maxReplicas: 3
+      rules:
+        - name: http-scaler
+          http:
+            metadata:
+              concurrentRequests: "30" 

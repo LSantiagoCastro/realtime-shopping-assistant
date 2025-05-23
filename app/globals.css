@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --accent-primary: #3d7af5;
+  --accent-secondary: #4f46e5;
+  --card-bg: #1e1e1e;
+  --card-highlight: #2a2a2a;
+  --border-color: #333333;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overscroll-behavior: none;
+}
+
+/* Estilos para el carrusel 3D */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.dark-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.dark-header {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+@keyframes highlight-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(77, 124, 254, 0.7); }
+  70% { box-shadow: 0 0 0 20px rgba(77, 124, 254, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(77, 124, 254, 0); }
+}
+
+.highlight-pulse {
+  animation: highlight-pulse 1.5s infinite;
+}

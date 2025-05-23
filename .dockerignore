@@ -1,0 +1,30 @@
+# Exclude node modules
+node_modules
+
+# Exclude Next.js build output
+.next
+
+# Exclude development files
+.git
+.github
+.vscode
+.env*.local
+
+# Exclude logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Exclude test files
+__tests__
+*.test.js
+*.spec.js
+
+# Exclude Docker files (to prevent infinite recursion)
+Dockerfile
+.dockerignore
+
+# Exclude other unnecessary files
+.DS_Store
+*.md
+!README.md 
