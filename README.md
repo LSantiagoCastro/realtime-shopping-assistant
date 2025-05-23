@@ -1,32 +1,33 @@
 # Real-Time Voice-Powered E-commerce Agent
 
+![Frontend Screenshot](./public/images/frontend.png)
+
 This project demonstrates a real-time voice-powered e-commerce agent using OpenAI's Realtime API with WebRTC. The application allows users to:
 
 1. Capture voice from the user in real-time
-2. Stream live transcription in the browser 
-3. Call a filter_products function based on detected voice commands
-4. Display the function call results and relevant products
+2. Call a filter_products function based on detected voice commands
+3. Display the function call results and relevant products
+4. Save and manage query history for future reference
 
 ## Features
 
 - **Real-time voice interaction** - Uses OpenAI's WebRTC implementation for voice processing
-- **Live transcription** - Shows what the model hears in real-time
 - **Function calling** - Detects product queries and extracts parameters (category, color, price)
 - **Product display** - Shows matching products based on voice query
-- **Voice turn detection** - Creates new paragraphs on silence
+
 - **Session management** - Connect, disconnect, pause, and reset functionality
 
 ## Example Voice Flows
 
 "Show me red sneakers under 100 dollars"
-- Live transcript displays your request
 - Function call triggers filter_products with parameters
 - UI displays matching red sneakers under $100
+- Query is automatically saved to history
 
 "Find blue shirts"
-- Live transcript shows your request
 - Function call extracts category="shirts" and color="blue"
 - UI displays matching blue shirts
+- Search is added to query history for easy access
 
 ## Technology Stack
 
@@ -34,6 +35,7 @@ This project demonstrates a real-time voice-powered e-commerce agent using OpenA
 - **Backend**: Next.js API routes
 - **AI**: OpenAI Realtime API with `gpt-4o-realtime-preview-2024-12-17` model
 - **Communication**: WebRTC for real-time audio streaming
+- **Storage**: Local storage for query history persistence
 
 ## Requirements
 
@@ -62,9 +64,10 @@ This project demonstrates a real-time voice-powered e-commerce agent using OpenA
 1. Click the "Connect" button to establish a session with OpenAI
 2. When prompted, allow microphone access
 3. Start speaking your product request (e.g., "Show me red sneakers under 100 dollars")
-4. View the transcription and product results in real-time
-5. Use the "Reset" button to clear the current search and start again
-6. Click "Disconnect" when finished
+4. View the product results in real-time
+5. Access your query history to revisit previous searches
+6. Use the "Reset" button to clear the current search and start again
+7. Click "Disconnect" when finished
 
 ## Project Structure
 
